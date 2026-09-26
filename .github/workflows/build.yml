@@ -7,7 +7,7 @@ on:
   pull_request:
 
 env:
-  SYMGEN_VERSION: v1.2.4
+  SYMGEN_VERSION: v1.3.6
 
 jobs:
   build:
@@ -96,6 +96,8 @@ jobs:
     name: Combine bundles
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v7
 

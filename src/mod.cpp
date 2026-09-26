@@ -1,7 +1,6 @@
-#include "mods/svc/hook.hpp"
 #include "mods/service.hpp"
-#include "mods/svc/hook.h"
-#include "mods/svc/log.h"
+#include "mods/svc/hook.hpp"
+#include "mods/svc/log.hpp"
 
 // Game includes
 #include "d/d_item_data.h"
@@ -28,11 +27,11 @@ MOD_EXPORT ModResult mod_initialize(ModError*) {
     // Installs a pre hook on fopAcM_createItem.
     ModResult result = mods::hook::add_pre<CreateItem>(on_create_item_pre);
     if (result != MOD_OK) {
-        svc_log->error(mod_ctx, "failed to install on_create_item_pre");
+        mods::log::error("failed to install pre_hook on_create_item_pre");
         return result;
     }
 
-    svc_log->info(mod_ctx, "my_mod initialized");
+    mods::log::info("my_mod initialized");
     return MOD_OK;
 }
 
